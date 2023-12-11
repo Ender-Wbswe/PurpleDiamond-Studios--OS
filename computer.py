@@ -1,10 +1,10 @@
 import sys,time,random
-typingSpeed = 200
+WPM = 200
 def slowType(t):
     for l in t:
         sys.stdout.write(l)
         sys.stdout.flush()
-        time.sleep(random.random()*10.0/typingSpeed)
+        time.sleep(random.random()*10.0/WPM)
     print('')
 def clear():
     time = 100
@@ -207,8 +207,9 @@ def games_textAdventure_game():
     clear()
     return
 def tools():
-    selected1 = "\nTools:\n\nNumber to Text Art<\n\nBack\n\n" + controlsTop
-    selected2 = "\nTools:\n\nNumber to Text Art\n\nBack<\n\n" + controlsEnd
+    selected1 = "\nTools:\n\nNumber to Text Art<\n\nText File Editor\n\nBack\n\n" + controlsTop
+    selected2 = "\nTools:\n\nNumber to Text Art\n\nText File Editor<\n\nBack\n\n" + controlsMid
+    selected3 = "\nTools:\n\nNumber to Text Art\n\nText File Editor\n\nBack<\n\n" + controlsEnd
     now = selected1
     while True:
         while now == selected1:
@@ -228,6 +229,19 @@ def tools():
             if "up" in command.lower():
                 clear()
                 now = selected1
+            elif "down" in command.lower():
+                clear()
+                now = selected3
+            elif "ok" in command:
+                clear()
+                slowType("Waiting on update(check the GitHub hwere you found this, or ask Ender if you have contact.)          ")
+                clear()
+        while now == selected3:
+            print(selected3)
+            command = input(">>")
+            if "up" in command.lower():
+                clear()
+                now = selected2
             elif "ok" in command.lower():
                 now = "no"
                 break
@@ -235,12 +249,14 @@ def tools():
                 clear()
         if now == "no":
             break
+    clear()
     return
 def tools_numberToTextArt():
     def numbersShadow():
         while True:
             number =  input("\"back\" to go back\nWhat number do you want converted? Single digits only.\n>>")
             if "back" in number.lower():
+                clear()
                 break
             elif number == "1":
                 print() #gaps to give space
@@ -338,6 +354,7 @@ def tools_numberToTextArt():
         while True:
             number =  input("\"back\" to go back\nWhat number do you want converted? Single digits only. ")
             if "back" in number.lower():
+                clear()
                 break
             elif number == "0":
                 print()
